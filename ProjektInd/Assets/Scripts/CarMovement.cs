@@ -10,10 +10,10 @@ public class CarMovement : MonoBehaviour
     public float Acceleration;
     public float Deacceleration;
 
-
     float m_EnginePower = 0f;
     float m_SteeringDirection = 0f;
     float m_TargetEnginePower = 0f;
+    float m_CurrentMaximumEnginePower = 1f;
 
     Rigidbody2D m_Body;
     void Awake()
@@ -35,7 +35,9 @@ public class CarMovement : MonoBehaviour
             acceleration = Deacceleration;
         }
 
-        m_EnginePower = Mathf.MoveTowards(m_EnginePower, m_TargetEnginePower, acceleration * Time.deltaTime);
+        float targetEnginePower = m_TargetEnginePower * m_CurrentMaximumEnginePower;
+
+        m_EnginePower = Mathf.MoveTowards(m_EnginePower, targetEnginePower, acceleration * Time.deltaTime);
     }
 
     private void FixedUpdate()
@@ -52,7 +54,7 @@ public class CarMovement : MonoBehaviour
             maximumEngineForce = MaximumReverseEngineForce;
         }
 
-        m_Body.AddForce(-transform.right * m_EnginePower * MaximumEngineForce, ForceMode2D.Force);
+        m_Body.AddForce(-transform.right * m_EnginePower * m_CurrentMaximumEnginePower * MaximumEngineForce, ForceMode2D.Force);
     }
     void ApplySteeringForce()
     {
@@ -66,6 +68,25 @@ public class CarMovement : MonoBehaviour
 
     public void SetSteeringDirection(float steeringDirection)
     {
-        m_SteeringDirection = steeringDirection;
+        m_SteeringDirection = Mathf.Clamp( steeringDirection, -1f, 1f);
+    }
+
+    public void OnCollideWithObstacle()
+    {
+        m_EnginePower = 0f;
+    }
+
+    public void OnCollideWithOil()
+    {
+    }
+
+    public void OnEnterOffCourseArea()
+    {
+        m_CurrentMaximumEnginePower = 0.4f;
+    }
+
+    public void OnExitOffCourseArea()
+    {
+        m_CurrentMaximumEnginePower = 1f;
     }
 }
