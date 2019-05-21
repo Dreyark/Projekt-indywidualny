@@ -82,7 +82,7 @@ public class CarMovement : MonoBehaviour
 
     public void OnEnterOffCourseArea()
     {
-        m_CurrentMaximumEnginePower = 0.4f;
+        m_CurrentMaximumEnginePower = 0.6f;
     }
 
     public void OnExitOffCourseArea()

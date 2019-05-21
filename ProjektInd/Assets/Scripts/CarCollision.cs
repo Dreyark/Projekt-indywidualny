@@ -13,7 +13,7 @@ public class CarCollision : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision.collider.name + " " + collision.collider.tag);
+        //Debug.Log(collision.collider.name + " " + collision.collider.tag);
         if( collision.collider.CompareTag("Obstacle") == true)
         {
             m_Movement.OnCollideWithObstacle();
