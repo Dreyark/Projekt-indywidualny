@@ -65,6 +65,7 @@
     <Compile Include="Assets\LapManagerUI.cs" />
     <Compile Include="Assets\MainMenu.cs" />
     <Compile Include="Assets\PlayerMenu.cs" />
+    <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\CarCollision.cs" />
     <Compile Include="Assets\Scripts\CarInputBase.cs" />
     <Compile Include="Assets\Scripts\CarInputKeyboard.cs" />

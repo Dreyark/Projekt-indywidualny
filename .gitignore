@@ -2,6 +2,6 @@
 # Ten plik .gitignore został utworzony automatycznie przez Microsoft(R) Visual Studio.
 ################################################################################
 
-/ProjektInd/Library/metadata/00/00000000000000001000000000000000
+/ProjektInd/Library/metadata/
 /ProjektInd/Library
 /ProjektInd/Temp
