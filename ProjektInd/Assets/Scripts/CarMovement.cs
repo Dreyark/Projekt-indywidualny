@@ -76,8 +76,14 @@ public class CarMovement : MonoBehaviour
         m_EnginePower = 0f;
     }
 
-    public void OnCollideWithOil()
+    public void OnEnterOil()
     {
+        m_CurrentMaximumEnginePower = 0.6f;
+    }
+
+    public void OnExitOffOil()
+    {
+        m_CurrentMaximumEnginePower = 1f;
     }
 
     public void OnEnterOffCourseArea()

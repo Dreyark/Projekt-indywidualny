@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LapLine : MonoBehaviour
 {
+    public string TagName;
     public int Index;
 
     LapManager m_LapManager;
@@ -15,7 +16,7 @@ public class LapLine : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D otherCollider)
     {
-        if (otherCollider.CompareTag("Car") == true)
+        if (otherCollider.CompareTag(TagName) == true)
         {
             m_LapManager.OnLapLinePassed(Index);
         }

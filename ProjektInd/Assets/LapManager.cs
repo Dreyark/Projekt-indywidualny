@@ -45,7 +45,7 @@ public class LapManager : MonoBehaviour
         {
             if(m_IsLapStarted == false || m_lastLapLineIndex == m_HighestLapLine)
             {
-                Debug.Log("Passed Linezzz" + index);
+                //Debug.Log("Passed Linezzz" + index);
                 OnFinishLinePassed();
             }
         }
@@ -54,7 +54,7 @@ public class LapManager : MonoBehaviour
             if( index == m_lastLapLineIndex +1)
             {
                 m_lastLapLineIndex = index;
-                Debug.Log("Passed Line" + index);
+                //Debug.Log("Passed Line" + index);
             }
         }
 

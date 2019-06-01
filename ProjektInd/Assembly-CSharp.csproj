@@ -68,8 +68,10 @@
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\CarCollision.cs" />
     <Compile Include="Assets\Scripts\CarInputBase.cs" />
-    <Compile Include="Assets\Scripts\CarInputKeyboard.cs" />
+    <Compile Include="Assets\Scripts\CarInputKeyboardOne.cs" />
+    <Compile Include="Assets\Scripts\CarInputKeyboardTwo.cs" />
     <Compile Include="Assets\Scripts\CarMovement.cs" />
+    <Compile Include="Assets\Scripts\Configuration.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />

@@ -24,7 +24,7 @@ public class CarCollision : MonoBehaviour
     {
         if( otherCollider.CompareTag("Oil") == true)
         {
-            m_Movement.OnCollideWithOil();
+            m_Movement.OnEnterOil();
         }
 
         if (otherCollider.CompareTag("OffCourseArea") == true)
@@ -38,6 +38,11 @@ public class CarCollision : MonoBehaviour
         if (otherCollider.CompareTag("OffCourseArea") == true)
         {
             m_Movement.OnExitOffCourseArea();
+        }
+
+        if (otherCollider.CompareTag("Oil") == true)
+        {
+            m_Movement.OnExitOffOil();
         }
     }
 }
