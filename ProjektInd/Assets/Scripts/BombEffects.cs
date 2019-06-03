@@ -34,7 +34,7 @@ public class BombEffects : MonoBehaviour
                 isTimerOn = false;
                 Destroy(this.gameObject);
             }
-            if (DeltaTime > 1.5)
+            if (DeltaTime > 1)
             {
                 collider2d.enabled = true;
             }

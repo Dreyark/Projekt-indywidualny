@@ -35,7 +35,7 @@ public class BoxEffects : MonoBehaviour
         if (isTimerOn == true)
         {
             DeltaTime = Time.realtimeSinceStartup - StartCountingTime;
-            if (DeltaTime > 15)
+            if (DeltaTime > 10)
             {
                 transform.localPosition = Pos;
                 isTimerOn = false;

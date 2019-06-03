@@ -19,6 +19,8 @@ public class CarMovement : MonoBehaviour
     float StartCountingTime;
     float DeltaTime;
     bool isTimerOn = false;
+    bool BombEnable = false;
+    bool BoostEnable = false;
     int equipment = 0;
     int ChangeSteeringKeys = 1;
     Transform CarPos;
@@ -88,14 +90,33 @@ public class CarMovement : MonoBehaviour
         if (isTimerOn == true)
         {
             DeltaTime = Time.realtimeSinceStartup - StartCountingTime;
-            if (DeltaTime > 3)
+            if (BombEnable)
             {
-                isTimerOn = false;
-                m_CurrentMaximumEnginePower = 1;
+                Debug.Log(DeltaTime);
+                if (DeltaTime > 3)
+                {
+                    isTimerOn = false;
+                    BombEnable = false;
+                    m_CurrentMaximumEnginePower = 1f;
+                }
+                else
+                {
+                    Debug.Log("dziala");
+                    m_CurrentMaximumEnginePower = 0f;
+                }
             }
-            else
+            if (BoostEnable)
             {
-                m_CurrentMaximumEnginePower = 0;
+                if (DeltaTime > 3)
+                {
+                    isTimerOn = false;
+                    BoostEnable = false;
+                    m_CurrentMaximumEnginePower = 1f;
+                }
+                else
+                {
+                    m_CurrentMaximumEnginePower = 1.35f;
+                }
             }
         }
     }
@@ -113,6 +134,7 @@ public class CarMovement : MonoBehaviour
     public void OnCollideWithBomb()
     {
         isTimerOn = true;
+        BombEnable = true;
         StartCountingTime = Time.realtimeSinceStartup;
 
     }
@@ -135,9 +157,15 @@ public class CarMovement : MonoBehaviour
     public void OnEnterBox()
     {
         System.Random rnd = new System.Random();
-        equipment = rnd.Next(1, 3); // 1 - boost 2 - oil
-        Debug.Log(equipment);
+        equipment = rnd.Next(1, 4); // 1 - oil 2 - bomb 3 - boost
 
+    }
+
+    public void BoostTime()
+    {
+        BoostEnable = true;
+        isTimerOn = true;
+        StartCountingTime = Time.realtimeSinceStartup;
     }
 
     public void UseEquipment()
@@ -152,13 +180,13 @@ public class CarMovement : MonoBehaviour
             deployer.SetBomb(CarPos);
             equipment = 0;
         }
+        else if (equipment == 3)
+        {
+            BoostTime();
+            equipment = 0;
+        }
         else
         {
         }
     }
-    void BoostTime(int Time)
-    {
-
-    }
-
 }

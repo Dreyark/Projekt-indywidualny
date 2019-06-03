@@ -34,7 +34,7 @@ public class OilEffects : MonoBehaviour
                 isTimerOn = false;
                 Destroy(this.gameObject);
             }
-            if (DeltaTime > 0.5)
+            if (DeltaTime > 1)
             {
                 collider2d.enabled = true;
             }
