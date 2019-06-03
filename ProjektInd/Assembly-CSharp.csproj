@@ -60,11 +60,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\LapLine.cs" />
-    <Compile Include="Assets\LapManager.cs" />
-    <Compile Include="Assets\LapManagerUI.cs" />
-    <Compile Include="Assets\MainMenu.cs" />
-    <Compile Include="Assets\PlayerMenu.cs" />
+    <Compile Include="Assets\Scripts\BombEffects.cs" />
+    <Compile Include="Assets\Scripts\BoxEffects.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\CarCollision.cs" />
     <Compile Include="Assets\Scripts\CarInputBase.cs" />
@@ -72,6 +69,15 @@
     <Compile Include="Assets\Scripts\CarInputKeyboardTwo.cs" />
     <Compile Include="Assets\Scripts\CarMovement.cs" />
     <Compile Include="Assets\Scripts\Configuration.cs" />
+    <Compile Include="Assets\Scripts\Deployer.cs" />
+    <Compile Include="Assets\Scripts\LapLine.cs" />
+    <Compile Include="Assets\Scripts\LapManager.cs" />
+    <Compile Include="Assets\Scripts\LapManagerUI.cs" />
+    <Compile Include="Assets\Scripts\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\Menu.cs" />
+    <Compile Include="Assets\Scripts\OilEffects.cs" />
+    <Compile Include="Assets\Scripts\PlayerMenu.cs" />
+    <Compile Include="Assets\Scripts\RestartGame.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />

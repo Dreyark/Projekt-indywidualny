@@ -4,10 +4,27 @@ using UnityEngine;
 
 public class CarInputKeyboardOne : CarInputBase
 {
+    Vector3 pos;
+    public Menu menu;
+
+    private void Start()
+    {
+        pos = transform.localPosition;
+        pos.x = -48;
+        pos.y = -106;
+        pos.z = -3;
+        transform.localPosition = pos;
+    }
+
     void Update()
     {
-        UpdateSteering();
-        UpdateEnginePower();
+        if (!menu.gameObject.activeSelf)
+        {
+            UpdateSteering();
+            UpdateEnginePower();
+            UseEquipment();
+            OpenMenu();
+        }
     }
 
     void UpdateSteering()
@@ -36,6 +53,22 @@ public class CarInputKeyboardOne : CarInputBase
         if (Input.GetKey(KeyCode.S))
         {
             SetEnginePower(-0.5f);
+        }
+    }
+
+    void UseEquipment()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            ActivateWeapon();
+        }
+    }
+
+    void  OpenMenu()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            menu.gameObject.SetActive(!menu.gameObject.activeSelf);
         }
     }
 }

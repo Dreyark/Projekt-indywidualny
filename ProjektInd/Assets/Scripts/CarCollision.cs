@@ -18,6 +18,12 @@ public class CarCollision : MonoBehaviour
         {
             m_Movement.OnCollideWithObstacle();
         }
+
+        if (collision.collider.CompareTag("Bomb") == true)
+        {
+            m_Movement.OnCollideWithBomb();
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D otherCollider)
@@ -31,6 +37,12 @@ public class CarCollision : MonoBehaviour
         {
             m_Movement.OnEnterOffCourseArea();
         }
+
+        if (otherCollider.CompareTag("Box") == true)
+        {
+            m_Movement.OnEnterBox();
+        }
+
     }
 
     private void OnTriggerExit2D(Collider2D otherCollider)

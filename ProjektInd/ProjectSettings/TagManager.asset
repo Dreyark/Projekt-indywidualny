@@ -9,6 +9,8 @@ TagManager:
   - OffCourseArea
   - PlayerTwo
   - PlayerOne
+  - Box
+  - Bomb
   layers:
   - Default
   - TransparentFX

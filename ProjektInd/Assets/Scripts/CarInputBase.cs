@@ -21,4 +21,9 @@ public class CarInputBase : MonoBehaviour
     {
         m_Movement.SetEnginePower(enginePower);
     }
+
+    protected void ActivateWeapon()
+    {
+        m_Movement.UseEquipment();
+    }
 }
