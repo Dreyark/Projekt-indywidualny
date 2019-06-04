@@ -5,7 +5,7 @@ using UnityEngine;
 public class CarInputKeyboardOne : CarInputBase
 {
     Vector3 pos;
-    public Menu menu;
+    public GameObject menu;
 
     private void Start()
     {
@@ -18,7 +18,7 @@ public class CarInputKeyboardOne : CarInputBase
 
     void Update()
     {
-        if (!menu.gameObject.activeSelf)
+        if (!menu.activeSelf)
         {
             UpdateSteering();
             UpdateEnginePower();
@@ -68,7 +68,7 @@ public class CarInputKeyboardOne : CarInputBase
     {
         if (Input.GetKey(KeyCode.Escape))
         {
-            menu.gameObject.SetActive(!menu.gameObject.activeSelf);
+            menu.SetActive(!menu.activeSelf);
         }
     }
 }

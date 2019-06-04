@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CarMovement : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class CarMovement : MonoBehaviour
     bool BoostEnable = false;
     int equipment = 0;
     int ChangeSteeringKeys = 1;
+    public Text EquipmentText;
     Transform CarPos;
 
     public Deployer deployer;
@@ -35,9 +37,30 @@ public class CarMovement : MonoBehaviour
 
     private void Update()
     {
+        UpdateEquipmentText();
         CarPos = transform;
         UpdateEnginePower();
         Timer();
+    }
+
+   void UpdateEquipmentText()
+    {
+        if (equipment == 1)
+        {
+            EquipmentText.text = "Equipment: Oil";
+        }
+        else if (equipment == 2)
+        {
+            EquipmentText.text = "Equipment: Bomb";
+        }
+        else if (equipment == 3)
+        {
+            EquipmentText.text = "Equipment: Speed Boost";
+        }
+        else
+        {
+            EquipmentText.text = "Equipment: None";
+        }
     }
 
     void UpdateEnginePower()

@@ -8,11 +8,22 @@ public class LapManager : MonoBehaviour
     {
         get
         {
-            if (m_IsLapStarted == false)
+            DeltaTime = Time.realtimeSinceStartup;
+            DeltaTime = DeltaTime - DeltaTime2;
+            if (!PauseMenu.activeSelf)
             {
-                return 0f;
+                Time.timeScale = 1f;
+                if (m_IsLapStarted == false)
+                {
+                    return 0f;
+                }
+                return DeltaTime - m_currentLapStartTime;
             }
-            return Time.realtimeSinceStartup - m_currentLapStartTime;
+            else
+            {
+                DeltaTime2 += Time.deltaTime;
+                return 0;
+            }
         }
     }
     public float LastLapTime { get; private set; }
@@ -21,10 +32,25 @@ public class LapManager : MonoBehaviour
     float m_currentLapStartTime;
     int m_lastLapLineIndex = 0;
     int m_HighestLapLine;
+    float DeltaTime;
+    float DeltaTime2;
+    public GameObject PauseMenu;
 
     private void Start()
     {
         m_HighestLapLine = GetHighestLapLine();
+    }
+
+    void OnPauseScreen()
+    {
+        if (PauseMenu.activeSelf)
+        {
+
+        }
+        else
+        {
+
+        }
     }
 
     int GetHighestLapLine()
@@ -32,7 +58,7 @@ public class LapManager : MonoBehaviour
         int highestLapLine = 0;
         LapLine[] lapLines = GetComponentsInChildren<LapLine>();
 
-        for(int i = 0; i < lapLines.Length;i++)
+        for (int i = 0; i < lapLines.Length; i++)
         {
             highestLapLine = Mathf.Max(m_HighestLapLine, lapLines[i].Index);
         }
@@ -43,18 +69,16 @@ public class LapManager : MonoBehaviour
     {
         if (index == 0)
         {
-            if(m_IsLapStarted == false || m_lastLapLineIndex == m_HighestLapLine)
+            if (m_IsLapStarted == false || m_lastLapLineIndex == m_HighestLapLine)
             {
-                //Debug.Log("Passed Linezzz" + index);
                 OnFinishLinePassed();
             }
         }
         else
         {
-            if( index == m_lastLapLineIndex +1)
+            if (index == m_lastLapLineIndex + 1)
             {
                 m_lastLapLineIndex = index;
-                //Debug.Log("Passed Line" + index);
             }
         }
 
