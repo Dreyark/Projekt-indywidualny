@@ -6,6 +6,7 @@ public class CarInputKeyboardTwo : CarInputBase
 {
     Vector3 pos;
     public GameObject menu;
+    float smoothnes;
 
     private void Start()
     {
@@ -44,14 +45,35 @@ public class CarInputKeyboardTwo : CarInputBase
     }
     void UpdateEnginePower()
     {
-        //SetEnginePower(Input.GetAxisRaw("Vertical"));
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            SetEnginePower(1f);
+            smoothnes += 0.006f;
+            if (smoothnes < -0.4)
+            {
+                smoothnes += 0.01f;
+            }
+            if (smoothnes > 1f)
+            {
+                smoothnes = 1f;
+            }
+            SetEnginePower(smoothnes);
         }
-        if (Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.DownArrow))
         {
-            SetEnginePower(-0.5f);
+            smoothnes -= 0.004f;
+            if (smoothnes > 0.5)
+            {
+                smoothnes -= 0.01f;
+            }
+            if (smoothnes < -0.5f)
+            {
+                smoothnes = -0.5f;
+            }
+            SetEnginePower(smoothnes);
+        }
+        else
+        {
+            smoothnes = smoothnes * 0.99f;
         }
     }
 

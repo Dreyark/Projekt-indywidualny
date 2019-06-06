@@ -8,6 +8,8 @@ public class BombEffects : MonoBehaviour
     float DeltaTime;
     bool isTimerOn = false;
     Collider2D collider2d;
+    public Animator animator;
+    float delay = 1f;
 
     void Start()
     {
@@ -32,7 +34,8 @@ public class BombEffects : MonoBehaviour
             if (DeltaTime > 5)
             {
                 isTimerOn = false;
-                Destroy(this.gameObject);
+                animator.SetBool("OnCollisionWithCar", true);
+                Destroy(gameObject, this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length + delay);
             }
             if (DeltaTime > 1)
             {
@@ -46,7 +49,8 @@ public class BombEffects : MonoBehaviour
     {
         if (collision.collider.CompareTag("PlayerOne") || collision.collider.CompareTag("PlayerTwo") == true)
         {
-            Destroy(this.gameObject);
+            animator.SetBool("OnCollisionWithCar", true);
+            Destroy(gameObject, this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length + delay);
         }
     }
 }

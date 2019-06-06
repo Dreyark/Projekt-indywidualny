@@ -22,7 +22,7 @@ public class CarMovement : MonoBehaviour
     bool isTimerOn = false;
     bool BombEnable = false;
     bool BoostEnable = false;
-    int equipment = 0;
+    int equipment = 2;
     int ChangeSteeringKeys = 1;
     public Text EquipmentText;
     Transform CarPos;
@@ -115,7 +115,6 @@ public class CarMovement : MonoBehaviour
             DeltaTime = Time.realtimeSinceStartup - StartCountingTime;
             if (BombEnable)
             {
-                Debug.Log(DeltaTime);
                 if (DeltaTime > 3)
                 {
                     isTimerOn = false;
@@ -124,7 +123,6 @@ public class CarMovement : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("dziala");
                     m_CurrentMaximumEnginePower = 0f;
                 }
             }
